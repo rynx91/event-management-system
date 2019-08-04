@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="mt-2">
+    <h2 class="text-center" *ngIf="!form.data.eventModel.eventId">Add Event</h2>
+    <h2 class="text-center" *ngIf="form.data.eventModel.eventId">Edit Event</h2>
+    <div>
+      <div class="form-group">
+        <label for="eventTitle">Event Title *</label>
+        <input [(ngModel)]="form.data.eventModel.eventTitle" placeholder="Event Title" name="eventTitle" class="form-control" id="eventTitle">
+      </div>
+      <div class="alert-danger" *ngIf="form.error.eventTitle">{{form.error.eventTitle}}</div>
+
+      <div class="form-group">
+        <label for="location">Location *</label>
+        <input [(ngModel)]="form.data.eventModel.location" placeholder="Location" name="location" class="form-control" id="location">
+      </div>
+      <div class="alert-danger" *ngIf="form.error.location">{{form.error.location}}</div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea [(ngModel)]="form.data.eventModel.description" placeholder="Description" name="description" class="form-control" id="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="maxPax">Max Pax</label>
+        <input type="number" min="1" step="1" [(ngModel)]="form.data.eventModel.maxPax" name="maxPax" class="form-control" id="maxPax">
+      </div>
+
+      <div class="form-group">
+        <label>Event Date *</label>
+        <input [owlDateTimeTrigger]="eventDate" [owlDateTime]="eventDate"
+               [(ngModel)]="form.data.eventModel.eventDate">
+        <owl-date-time #eventDate></owl-date-time>
+      </div>
+      <div class="alert-danger" *ngIf="form.error.eventDate">{{form.error.eventDate}}</div>
+
+      <button class="btn btn-success" (click)="createEvent()" *ngIf="!form.data.eventModel.eventId">Create</button>
+      <button class="btn btn-success" (click)="updateEvent()" *ngIf="form.data.eventModel.eventId">Update</button>
+    </div>
+  </div>
+</div>

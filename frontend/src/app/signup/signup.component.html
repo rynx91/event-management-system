@@ -1,0 +1,28 @@
+<div class="container mt-2">
+  <div class = "form-horizontal">
+    <h2>Sign Up</h2>
+    <div class="row alert-danger m-1" *ngIf="form.error.signup">
+      <h6>{{form.error.signup}}</h6>
+    </div>
+    <div class = "form-group">
+      <label for = "userId" class = "control-label">User ID *</label>
+      <div>
+        <input type = "text" class = "form-control" id = "userId" placeholder = "User ID" [(ngModel)]="form.data.user.userId">
+      </div>
+    </div>
+    <div class = "form-group">
+      <label for = "password" class = "control-label">Password *</label>
+      <div>
+        <input type = "password" class = "form-control" id = "password" placeholder = "password" [(ngModel)]="form.data.user.password">
+      </div>
+    </div>
+    <div class = "form-group mt-4">
+      <div class = "col-sm-offset-2 col-sm-10">
+        <button type = "submit" class = "btn btn-success" (click)="onSignup()">Signup</button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 row justify-content-center">
+    <a href="/login">Login</a>
+  </div>
+</div>

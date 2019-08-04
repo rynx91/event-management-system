@@ -1,0 +1,29 @@
+<div class="mt-2">
+<h2> Home</h2>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="hidden">Event Id</th>
+    <th>Event Title</th>
+    <th>Location</th>
+    <th>Event Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of form.data.eventModels">
+    <td class="hidden">{{e.eventId}}</td>
+    <td>{{e.eventTitle}}</td>
+    <td>{{e.location}}</td>
+    <td>{{e.eventDate | date:"dd-MM-yyyy"}}</td>
+    <td>
+      <button class="btn btn-info" (click)="viewEvent(e.eventId)"> View</button>
+      <button class="btn btn-primary" (click)="editEvent(e.eventId)" *ngIf="e.createdBy===localStorageService.get('userId')"> Edit</button>
+      <button class="btn btn-success" (click)="registerEvent(e)" *ngIf="e.createdBy!=localStorageService.get('userId')"> Register</button>
+      <button class="btn btn-danger" (click)="deleteEvent(e)" *ngIf="e.createdBy===localStorageService.get('userId')"> Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
